@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <button onclick="login()">Login</button>
+        <input id="input"/>
+        <button onclick="secondFactor()">2FA</button>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://localhost:8080');
+            function login()
+            {
+                socket.emit('/login', {"username": "Broj", "password": "blowme"});
+            }
+            function secondFactor()
+            {
+                socket.emit('/twofactor', {"code": document.getElementById("input").value})
+            }
+            socket.on('/AccessCode', function (data)
+            {
+                console.log(data.access_code);
+            });
+        </script>
+    </body>
+</html>
