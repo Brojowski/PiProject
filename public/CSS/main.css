@@ -1,0 +1,46 @@
+.nav {
+    position: absolute;
+    height:10%;
+    width: 100%;
+    background-color: purple;
+}
+
+.nav ul {
+    list-style-type: none;
+}
+
+.sideBar {
+    position: fixed;
+    left:-20%;
+    top: 0;
+    width: 20%;
+    min-height:100%;
+
+    background-color: black;
+    color: white;
+}
+
+.sideBar h1{
+    padding-top: 0;
+    color: ghostwhite;
+    font-size: 24px;
+}
+
+.sideBar li {
+    list-style-type: none;
+}
+
+.content {
+    position: absolute;
+    min-height: 88%;
+    top: 12%;
+    width: 98%;
+    right: 1%;
+    background-color: green;
+
+}
+
+.content h1 {
+    color: black;
+
+}

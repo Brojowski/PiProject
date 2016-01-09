@@ -1,0 +1,15 @@
+.loginBox {
+    position: absolute;
+
+    top: 40%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.loginBox li {
+    list-style-type: none;
+}
+
+.loginBox input {
+    margin-bottom: 5%;
+}
