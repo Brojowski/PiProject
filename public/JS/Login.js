@@ -54,7 +54,7 @@
                     {
                         //TODO(Chris): show 2FA failed
                         console.log('2nd Factor Failed');
-                        $scope.twoFactorIDError=false;
+                        $scope.twoFactorIDError=true;
                     }
                 });
             }
