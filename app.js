@@ -1,4 +1,5 @@
-var app = require('express')();
+var express = require('express')
+var app = express();
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var io = require("socket.io").listen(app.listen(8080));
@@ -9,8 +10,11 @@ app.use(cookieParser());
 
 app.get('/',function(req,res)
 {
-   res.sendFile(__dirname + "\\public\\login.html")
+   res.sendFile(__dirname + "\\public\\HTML\\Login.html")
 });
+
+app.use('/public',express.static(__dirname + '/public/'));
+
 
 var dataAccess = require(__dirname + "/routes/database_access.js");
 

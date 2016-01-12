@@ -2,34 +2,61 @@
  * Created by rossc on 1/8/2016.
  */
 
-(function(){
-    var app = angular.module('LoginScreen',[]);
+(function ()
+{
+    var app = angular.module('LoginScreen', []);
 
-    app.controller('LoginController', function(){
+    app.controller('LoginController', ['$scope',"service", function ($scope,service)
+    {
+        $scope.loginScreen = true;
 
-        this.loginScreen = true;
+        $scope.username = "Broj";
+        $scope.password = "blowme";
+        $scope.twoFactorID = "";
 
-        this.username = "asdf";
-        this.password = "test";
-        this.twoFactorID = "";
-
-        this.loginButtonClick = function(){
+        $scope.loginButtonClick = function ()
+        {
             console.log(this.username + " " + this.password);
 
-            //TODO: Check to make sure the username and password is valid
-            //For now assume its true
+            //Check to make sure the username and password is valid
+            if ($scope.username != null && $scope.password != null)
+            {
+                service.login($scope.username, $scope.password, function (data)
+                {
+                    if (data.result)
+                    {
+                        //turns off the login screen and shows two factor auth
+                        console.log("Login Success");
+                        $scope.loginScreen = false;
+                        $scope.$apply();
+                    }else
+                    {
+                        console.log("Login Failed");
+                        //TODO(Chris): Show an error message
+                    }
 
-            this.loginScreen = false;
-        }
+                });
+            }
+        };
 
-        this.twoFactorIDButtonClick = function(){
-            console.log(this.twoFactorID);
-
-            //TODO: Check to make sure 2FA is correct
-            //For now assume its true
-        }
-    });
-
-
-
+        $scope.twoFactorIDButtonClick = function ()
+        {
+            //Check to make sure 2FA is correct
+            if($scope.twoFactorID != null)
+            {
+                service.twoFA($scope.twoFactorID,function(data)
+                {
+                    if (!data.err)
+                    {
+                        //TODO(Alex): continue on, login success
+                        console.log('2nd Factor Success');
+                    }else
+                    {
+                        //TODO(Chris): show 2FA failed
+                        console.log('2nd Factor Failed');
+                    }
+                });
+            }
+        };
+    }]);
 })();

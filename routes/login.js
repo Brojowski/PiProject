@@ -34,7 +34,11 @@ module.exports = function (socket, dataSource)
         {
             if (!err)
             {
-                socket.emit("/AccessCode", {"access_code": accessCode});
+                socket.emit("/AccessCode", {"err": false, "access_code": accessCode});
+            }
+            else
+            {
+                socket.emit("/AccessCode", {"err": true});
             }
         });
     });
