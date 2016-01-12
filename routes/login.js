@@ -14,16 +14,19 @@ module.exports = function (socket, dataSource)
     socket.on('/login', function (data)
     {
         console.log(data);
-        dataSource.login(data.username, data.password, function (err, telegramID, code)
+        dataSource.login(data.username, data.password, socket.id, function (err, telegramID, code)
         {
             if (!err)
             {
                 bot.sendMessage(telegramID, code);
                 socket.server_user = data.username;
                 socket.emit("/setOneOK", {'result': true});
-                return;
             }
-            socket.emit("/setOneOK", {"result": false});
+            else
+            {
+                socket.emit("/setOneOK", {"result": false});
+                dataSource.logBadLogin(socket.id,data.username,data.password);
+            }
         });
     });
 
@@ -39,6 +42,7 @@ module.exports = function (socket, dataSource)
             else
             {
                 socket.emit("/AccessCode", {"err": true});
+                dataSource.logBad2FA(socket.id,socket.server_user,data.code);
             }
         });
     });
