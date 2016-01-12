@@ -16,8 +16,6 @@
 
         $scope.loginButtonClick = function ()
         {
-            console.log(this.username + " " + this.password);
-
             //Check to make sure the username and password is valid
             if ($scope.username != null && $scope.password != null)
             {
@@ -34,7 +32,6 @@
                         console.log("Login Failed");
                         //TODO(Chris): Show an error message
                     }
-
                 });
             }
         };
