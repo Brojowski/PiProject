@@ -1,83 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/SlideMenu.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/main.css">
 	<script src="../JS/main.js"></script>
+
 
 	<meta charset="UTF-8">
 	<title></title>
 </head>
 
-<body>
-<div class="nav">
-	<input type="submit" class="btn btn-default" name="loginButton" onclick="showSideBar()">
-</div>
+<body ng-controller="AppController as appCtrl">
 
+<ul class="navigation">
+	<li class="nav-item"><a href="#">Home</a></li>
+	<li class="nav-item"><a href="#">Portfolio</a></li>
+	<li class="nav-item"><a href="#">About</a></li>
+	<li class="nav-item"><a href="#">Blog</a></li>
+	<li class="nav-item"><a href="#">Contact</a></li>
+</ul>
 
-<div class="sideBar">
-	<ul>
-		<li>TITLE</li>
-		<li>item 1</li>
-		<li>item 2</li>
-		<li>item 3</li>
-	</ul>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger"/>
+<label for="nav-trigger"></label>
 
+<div class="site-wrap">
 
-<div class="content">
-	<p>content</p>
-	<p>content</p>
+	<div class="header">
 
-	<p>content</p>
+	</div>
 
-	<p>content</p>
+	<div class="content">
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		<p>content</p>
+		
 
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-	<p>content</p>
-
-
+	</div>
 </div>
 </body>
 </html>

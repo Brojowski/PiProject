@@ -1,26 +1,32 @@
-.nav {
+.header {
     position: absolute;
-    height:10%;
+    top: 0;
+    left: 0;
+    height: 10%;
     width: 100%;
+    z-index: 0;
     background-color: purple;
 }
 
-.nav ul {
-    list-style-type: none;
-}
-
 .sideBar {
-    position: fixed;
-    left:-20%;
+    position: absolute;
     top: 0;
     width: 20%;
-    min-height:100%;
-
+    min-height: 100%;
+    left: -20%;
     background-color: black;
     color: white;
 }
 
-.sideBar h1{
+.sideBar.hide {
+    left: -20%;
+}
+
+.sideBar.slide {
+    left: 0%;
+}
+
+.sideBar h1 {
     padding-top: 0;
     color: ghostwhite;
     font-size: 24px;
@@ -35,9 +41,12 @@
     min-height: 88%;
     top: 12%;
     width: 98%;
-    right: 1%;
+    left: 0;
     background-color: green;
+}
 
+.content {
+    left: 5%;
 }
 
 .content h1 {
