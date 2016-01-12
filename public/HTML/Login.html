@@ -10,22 +10,34 @@
         <title>Login</title>
     </head>
     <body ng-app="LoginScreen">
-        {{9+1}}
-        <div class="main">
-            <div class="loginBox">
+
+        <div class="main" ng-controller="LoginController as loginCtrl">
+            <!--
+                the login in fields
+            -->
+            <div class="loginBox" ng-show="loginCtrl.loginScreen">
                 <ul>
                     <li><label for="userName">Username:</label></li>
-                    <li><input type="text" class="form-control" id="userName"/></li>
+                    <li><input ng-model="loginCtrl.username" type="text" class="form-control" id="userName"/></li>
                     <li><label for="password">Password:</label></li>
-                    <li><input type="password" class="form-control" id="password"></li>
+                    <li><input ng-model="loginCtrl.password" type="password" class="form-control" id="password"/></li>
                     <li>
-                        <input type="submit" class="btn btn-default" name="loginButton" onclick="buttonClick()">
+                        <input ng-click="loginCtrl.loginButtonClick()" type="submit" class="btn btn-default" name="loginButton"/>
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="twoFactorInput">
-            Test
+            <!--
+                the two factor ID fields
+            -->
+            <div class="loginBox" ng-hide="loginCtrl.loginScreen">
+                <ul>
+	                <li><label for="telegram">Telegram Code:</label></li>
+	                <li><input ng-model="loginCtrl.twoFactorID" type="text" class="form-control" id="telegram"/></li>
+	                <li>
+		                <input ng-click="loginCtrl.twoFactorIDButtonClick()" type="submit" class="btn btn-default" name="loginButton" />
+	                </li>
+                </ul>
+            </div>
         </div>
 
     </body>
