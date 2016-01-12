@@ -13,3 +13,14 @@
 .loginBox input {
     margin-bottom: 5%;
 }
+
+.twoFactorInput{
+    z-index: 1;
+    position: absolute;
+    top:40%;
+    left:50%;
+    width:20%;
+    height: 35%;
+    transform: translate(-50%,-50%);
+    background-color: #000066;
+}
