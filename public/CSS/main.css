@@ -8,24 +8,6 @@
     background-color: purple;
 }
 
-.sideBar {
-    position: absolute;
-    top: 0;
-    width: 20%;
-    min-height: 100%;
-    left: -20%;
-    background-color: black;
-    color: white;
-}
-
-.sideBar.hide {
-    left: -20%;
-}
-
-.sideBar.slide {
-    left: 0%;
-}
-
 .sideBar h1 {
     padding-top: 0;
     color: ghostwhite;
@@ -41,12 +23,8 @@
     min-height: 88%;
     top: 12%;
     width: 98%;
-    left: 0;
+    left: 1%;
     background-color: green;
-}
-
-.content {
-    left: 5%;
 }
 
 .content h1 {
