@@ -20,6 +20,18 @@
             {
                 socket.emit('/twofactor', {"code": document.getElementById("input").value})
             }
+            socket.on('/setOneOK', function (data)
+            {
+                if (data.result)
+                {
+                    console.log('true');
+                }
+                else
+                {
+                    console.log('false');
+                }
+
+            });
             socket.on('/AccessCode', function (data)
             {
                 console.log(data.access_code);

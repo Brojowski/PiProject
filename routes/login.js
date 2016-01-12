@@ -20,14 +20,17 @@ module.exports = function (socket, dataSource)
             {
                 bot.sendMessage(telegramID, code);
                 socket.server_user = data.username;
+                socket.emit("/setOneOK", {'result': true});
+                return;
             }
+            socket.emit("/setOneOK", {"result": false});
         });
     });
 
     socket.on('/twofactor', function (data)
     {
         console.log("text:" + data.code);
-        dataSource.verifySecondFactor(socket.server_user,data.code, function (err, accessCode)
+        dataSource.verifySecondFactor(socket.server_user, data.code, function (err, accessCode)
         {
             if (!err)
             {
