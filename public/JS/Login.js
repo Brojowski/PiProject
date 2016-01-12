@@ -13,6 +13,8 @@
         $scope.username = "Broj";
         $scope.password = "blowme";
         $scope.twoFactorID = "";
+        $scope.loginError=false;
+        $scope.twoFactorIDError=false;
 
         $scope.loginButtonClick = function ()
         {
@@ -31,6 +33,7 @@
                     {
                         console.log("Login Failed");
                         //TODO(Chris): Show an error message
+                        $scope.loginError=true;
                     }
                 });
             }
@@ -51,6 +54,7 @@
                     {
                         //TODO(Chris): show 2FA failed
                         console.log('2nd Factor Failed');
+                        $scope.twoFactorIDError=false;
                     }
                 });
             }

@@ -11,6 +11,17 @@
     <body ng-app="LoginScreen">
 
         <div class="main" ng-controller="LoginController">
+	        <!--
+	            error messages
+	        -->
+	        <div ng-hide="loginError" class="alert alert-danger">
+		        <a href="#" class="close" aria-label="close" {{loginError="true"}}>&times;</a>
+		        <strong>Error!</strong> The username and password combination is invalid.
+	        </div>
+	        <div ng-hide="twoFactorIDError" class="alert alert-danger">
+		        <a href="#" class="close" aria-label="close" {{twoFactorIDError="true"}}>&times;</a>
+		        <strong>Error!</strong> The telegram code entered is incorrect.
+	        </div>
             <!--
                 the login in fields
             -->
