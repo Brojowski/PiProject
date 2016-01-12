@@ -14,12 +14,12 @@
 	        <!--
 	            error messages
 	        -->
-	        <div ng-hide="loginError" class="alert alert-danger">
-		        <a href="#" class="close" aria-label="close" {{loginError="false"}}>&times;</a>
+	        <div ng-show="loginError" class="alert alert-danger">
+		        <button class="close" aria-label="close" ng-click="loginError = false">&times;</button>
 		        <strong>Error!</strong> The username and password combination is invalid.
 	        </div>
-	        <div ng-hide="twoFactorIDError" class="alert alert-danger">
-		        <a href="#" class="close" aria-label="close" {{twoFactorIDError="false"}}>&times;</a>
+	        <div ng-show="twoFactorIDError" class="alert alert-danger">
+		        <button class="close" aria-label="close" ng-click="twoFactorIDError = false">&times;</button>
 		        <strong>Error!</strong> The telegram code entered is incorrect.
 	        </div>
             <!--
