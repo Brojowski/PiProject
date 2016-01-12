@@ -21,6 +21,8 @@ var dataAccess = require(__dirname + "/routes/database_access.js");
 io.sockets.on('connection',function(socket)
 {
     console.log("Connected to " + socket.handshake.address);
+    console.log("Socket id: " + socket.id);
+    dataAccess.logVisitor(socket.id,socket.handshake.address);
 
     var login = require(__dirname + "/routes/login.js")(socket,dataAccess);
 

@@ -23,7 +23,7 @@ function generateCode()
 }
 
 module.exports = {
-    login: function (username, password, callback)
+    login: function (username, password, socket_id, callback)
     {
         //login logic
         sql.query('SELECT * FROM users', function (err, rows, data)
@@ -39,7 +39,7 @@ module.exports = {
                             var code = generateCode();
                             callback(false, rows[i].telegramID, code);
                             //save code for reply
-                            sql.query('INSERT INTO logins VALUES (?,?,NOW())', [username, code], function (err, results)
+                            sql.query('INSERT INTO logins VALUES (?,?,NOW(),?)', [username, code, socket_id], function (err, results)
                             {
                                 if (err)
                                 {
@@ -56,9 +56,9 @@ module.exports = {
         ;
 
     },
-    verifySecondFactor: function (username,code, callback)
+    verifySecondFactor: function (username, code, callback)
     {
-        sql.query('SELECT * FROM logins WHERE sent>DATE_SUB(NOW(),INTERVAL 10 MINUTE)',function(err,rows)
+        sql.query('SELECT * FROM logins WHERE sent>DATE_SUB(NOW(),INTERVAL 10 MINUTE)', function (err, rows)
         {
             if (!err)
             {
@@ -67,7 +67,7 @@ module.exports = {
                     if (rows[i].username === username && rows[i].code === code)
                     {
                         console.log("OK");
-                        callback(false,"AccessCode");
+                        callback(false, "AccessCode");
                         return;
                     }
                 }
@@ -75,11 +75,39 @@ module.exports = {
             }
             callback(true);
         });
-    }
-
-    ,
+    },
     logout: function (username)
     {
 
+    },
+    logVisitor: function (socket_id, ip)
+    {
+        sql.query('INSERT INTO visitors values (?,?,NOW())', [socket_id, ip], function (err)
+        {
+            if (err)
+            {
+                console.log(err);
+            }
+        });
+    },
+    logBadLogin: function (socket_id, user, pass)
+    {
+        sql.query('INSERT INTO failed_logins VALUES (?,?,?,NOW())', [socket_id, user, pass], function (err)
+        {
+            if (err)
+            {
+                console.log(err);
+            }
+        });
+    },
+    logBad2FA: function (socket_id, user, input_key)
+    {
+        sql.query('INSERT INTO failed_2fa VALUES (?,?,?,NOW())', [socket_id, user, input_key], function (err)
+        {
+            if (err)
+            {
+                console.log(err);
+            }
+        });
     }
 };
