@@ -11,7 +11,7 @@
         $scope.loginScreen = true;
 
         $scope.username = "Broj";
-        $scope.password = "blowme";
+        $scope.password = "password";
         $scope.twoFactorID = "";
         $scope.loginError = false;
         $scope.twoFactorIDError = false;
